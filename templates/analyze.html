@@ -1,0 +1,131 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en-US">
+<body style="background-color: lemonchiffon">
+<center>
+<h1>Delhi Missing Reports</h1>
+<meta id="1" data-other='{{ lost_stats }}'>
+<meta id="2" data-other='{{ found_stats }}'>
+
+<div id="piechart"></div>
+<br>
+<div id="chartContainer" style="height: 400px; width: 80%;"></div>
+<br>
+
+<h1>Reports of particular stations</h1>
+<div id="chartContainer1" style="height: 400px; width: 80%;"></div>
+<br>
+<div id="chartContainer2" style="height: 400px; width: 80%;"></div>
+<br>
+<div id="chartContainer3" style="height: 400px; width: 80%;"></div>
+<br>
+<div id="chartContainer4" style="height: 400px; width: 80%;"></div>
+<br>
+<div id="chartContainer5" style="height: 400px; width: 80%;"></div>
+<br>
+<div id="chartContainer6" style="height: 400px; width: 80%;"></div>
+<br>
+<div id="chartContainer7" style="height: 400px; width: 80%;"></div>
+<br>
+<div id="chartContainer8" style="height: 400px; width: 80%;"></div>
+<br>
+<div id="chartContainer9" style="height: 400px; width: 80%;"></div>
+<br>
+<div id="chartContainer10" style="height: 400px; width: 80%;"></div>
+<br>
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</center>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+var stats = JSON.parse('{{json_string | escapejs}}')
+lost_stats = [['Police Stations', 'Missing Reports']];
+found_stats = [];
+
+for (x in stats['lost_stats'])
+{
+  lost_stats.push([x, stats['lost_stats'][x]]);
+}
+for (x in stats['found_stats'])
+{
+  found_stats.push({y: stats['found_stats'][x], label:x});
+}
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable(lost_stats);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'Missing Reports', 'width':550, 'height':400};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+
+
+}
+
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Found Reports"
+	},
+	axisY: {
+		title: "No. of Reports"
+	},
+	data: [{        
+		type: "column",  
+		showInLegend: true, 
+		legendMarkerColor: "grey",
+		legendText: "Cities",
+		dataPoints: found_stats
+	}]
+});
+chart.render();
+
+var count = 0;
+
+for (x in stats['lost_and_found_relation'])
+{
+	lost_and_found_stats = [];
+	// console.log(x);
+	count++;
+	for( y in stats['lost_and_found_relation'][x])
+	{
+		// console.log(y);
+		// console.log(stats['lost_and_found_relation'][x][y]);
+		var chartContainer = "chartContainer" + count;
+		lost_and_found_stats.push({y: stats['lost_and_found_relation'][x][y], label: y});
+		var chart = new CanvasJS.Chart(chartContainer, {
+			animationEnabled: true,
+			theme: "light2", // "light1", "light2", "dark1", "dark2"
+			title:{
+				text: x
+			},
+			axisY: {
+				title: "No. of Reports"
+			},
+			data: [{        
+				type: "column",  
+				showInLegend: true, 
+				legendMarkerColor: "grey",
+				legendText: "Cities",
+				dataPoints: lost_and_found_stats
+			}]
+		});
+		chart.render();
+	}
+}
+}
+</script>
+
+</body>
+</html>

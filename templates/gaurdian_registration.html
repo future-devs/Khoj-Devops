@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guardian</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="{% static 'javascript/upload_lost_person_image_form.js' %}"></script>
+</head>
+<body>
+	<center>
+		<div class="jumbotron">
+	  		<h1>KHOJ</h1>      
+	  		<p>A platform to prevent child trafficking.</p>
+		</div>
+		<div style="margin-top:40px; border-style: bold" class="container">
+
+			<form id="guardian_form" action="upload_lost_person_image_form" method="POST" enctype="multipart/form-data">
+  			{% csrf_token %} 
+			  <div class="form-group">
+			    <label for="guardian_name">Name</label>
+			    <input type="text" class="" id="loster_image" placeholder="Enter Name" multiple name="name">
+
+			    <label for="guardian_name">Address</label>
+			    <input type="text" class="" id="loster_image" placeholder="Enter Name" multiple name="address">
+
+			    <label for="guardian_name">Contact</label>
+			    <input type="text" class="" id="loster_image" placeholder="Enter Name" multiple name="contact">
+
+			    <label for="guardian_name">Email</label>
+			    <input type="email" class="" id="loster_image" placeholder="Enter Name" multiple name="contact">
+
+			    <label for="guardian_name">Contact</label>
+			    <input type="text" class="" id="loster_image" placeholder="Enter Name" multiple name="contact">
+
+			  </div>
+			 <br>
+			 
+			  <button type="submit" class="btn btn-primary" id="search_button">Upload</button>
+			</form>
+		</center>
+	</div>
+</body>
+</html>
