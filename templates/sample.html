@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guardian</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="{% static 'javascript/upload_lost_person_image_form.js' %}"></script>
+</head>
+<body>
+		<div class="jumbotron">
+			<center>
+				<h1>KHOJ</h1>      
+				<p>A platform to prevent child trafficking.</p>
+			</center>
+		</div>
+		<div class="row">
+			<div class="col">
+				<label for="name" style="margin-left: 60px;">Name of the lost person</label>
+				<div style="margin-left: 50px;">
+					<input type="text" class="" id="lost_person_name" placeholder="Enter Name" name="name">
+				</div>
+			</div>
+			<div class="col">
+					<div style="width: 100px; margin-left: 20px;">
+							<label for="gender">Gender</label>
+							<select class="form-control" id="gender" name="gender">
+								<option>Male</option>
+								<option>Female</option>
+								<option>Other</option>
+							 </select>
+						</div>
+			</div>
+		</div>
+		<div style="margin-top:40px; border-style: bold" class="container">
+
+			<form id="guardian_form" action="upload_lost_person_image_form" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+			  <div class="form-group">
+			    <label for="name" style="margin-left: 40px;">Name of the lost person</label>
+			    <div style="margin-left: 50px;">
+				    <input type="text" class="" id="lost_person_name" placeholder="Enter Name" name="name">
+				</div>
+
+			    <br>
+			    <br>
+				<div style="width: 100px; margin-left: 20px;">
+				    <label for="gender">Gender</label>
+					<select class="form-control" id="gender" name="gender">
+					    <option>Male</option>
+					    <option>Female</option>
+					    <option>Other</option>
+					 </select>
+				</div>
+
+				<div >
+					<input type="text" class="" id="upper_height_range" placeholder="Enter max height range" name="upper_height_range">
+				</div>
+
+				<div >
+						<input type="text" class="" id="lower_height_range" placeholder="Enter min height range" name="lower_height_range">
+				</div>
+
+				<div style="width: 100px; margin-left: 20px;">
+						<label for="face_complexion">Face Complexion</label>
+						<select class="form-control" id="face_complexion" name="face_complexion">
+							<option>Wheatish</option>
+							<option>Fair</option>
+							<option>Dark</option>
+							<option>Brown</option>
+						 </select>
+				</div>
+
+				<div >
+						<input type="text" class="" id="blood_group" placeholder="Enter Blood Group" name="blood_group">
+				</div>
+
+
+				<br>
+			    <br>
+
+			    <label for="name" style="margin-left: 40px;">Aadhar Card Num</label>
+			    <div style="margin-left: 50px;">
+				    <input type="text" class="" id="lost_person_name" placeholder="Enter Aadhar Card Num." name="aadhar_num">
+				</div>
+
+				<br>
+				<br>
+			    <label for="guardian_name">Upload image of the lost person</label>
+			    <div style="margin-left: 50px;">
+				    <input type="file" class="" id="loster_image" placeholder="Enter Name" multiple name="images">
+				</div>
+			  </div>
+			 <br>
+			 
+			  <button type="submit" class="btn btn-primary" id="search_button">Upload</button>
+			</form>
+	</div>
+</body>
+</html>
