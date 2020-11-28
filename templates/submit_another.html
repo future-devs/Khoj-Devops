@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Submit Another Entry</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="{% static 'javascript/upload_lost_person_image_form.js' %}"></script>
+</head>
+<body>
+	<center>
+		<form  id="submit_another_button" action="submit_another" method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<br>
+			<br>
+			<br>
+            <button type="submit" class="btn btn-primary btn-lg" id="submit_another_entry">Submit Another Entry</button>
+        </form>
+    </center>
+</body>
+</html>

@@ -1,0 +1,305 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Enter Lost Person Details</title>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<script src="{% static 'javascript/upload_lost_person_image_form.js' %}"></script>
+	</head>
+	<body>
+			<div class="jumbotron" style="background-image: url('{% static 'img/TRAFFICKING+BOOK+COVER.jpg' %}'); background-repeat: no-repeat; background-size: 1515px 300px">
+					<center>
+						<h1 style="color: white; font-family: 'Roboto', sans-serif;">KHOJ</h1>      
+						<p style="color: white; ">A platform to prevent child trafficking.</p>
+					</center>
+			</div>
+			<form id="lost_person_details" action="upload_lost_person_details" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="container">
+				<center>
+				<div class="row">
+					<div class="col-md-6">
+						<label>First Name</label>
+						<input type="text" class="form-control" placeholder="First name" name="first_name">
+					</div>
+					<div class="col-md-6">
+						<label>Last Name</label>
+						<input type="text" class="form-control" placeholder="Last name" name="last_name">
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-6">
+							<label for="gender">Gender</label>
+							<select class="form-control" id="gender" name="gender">
+								<option>Male</option>
+								<option>Female</option>
+								<option>Other</option>
+							</select>
+					</div>
+					<div class="col-md-6">
+						<label>Blood Group</label>
+						<input type="text" class="form-control" placeholder="Blood Group" name="blood_group">
+					</div>
+				</div>
+				<br>
+				<div class="row">
+						<div class="col-md-6">
+							<label>Face Complexion</label>
+							<select class="form-control" id="face_complexion" name="face_complexion">
+								<option>Wheatish</option>
+								<option>Fair</option>
+								<option>Dark</option>
+							</select>
+						</div>
+						<div class="col-md-6">
+							<label>Body Built</label>
+							<select class="form-control" id="body_built" name="body_built">
+								<option>Thin</option>
+								<option>Strong</option>
+								<option>Fat</option>
+							</select>
+						</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-6">
+						<label>Min Height Range</label>
+						<input type="text" class="form-control" placeholder="In centimetres" name="lower_height_range">
+					</div>
+					<div class="col-md-6">
+						<label>Max Height Range</label>
+						<input type="text" class="form-control" placeholder="In centimetres" name="upper_height_range">
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-6">
+						<label>Aadhar Card Number</label>
+						<input type="text" class="form-control" id="lost_person_name" placeholder="Enter Aadhar Card Number" name="aadhar_num">
+					</div>
+					<div class="col-md-6">
+						<label>Face Shape</label>
+						<select class="form-control" id="body_built" name="face_shape">
+							<option>Oval</option>
+							<option>Heart</option>
+							<option>Triange</option>
+						</select>
+					</div>
+				</div>
+				<br>
+				<br>
+				<label>Enter Last Location Before Disappearence</label>
+				<select class="form-control" id="last_appearence_place" name="last_appearence_place">
+					<option>Ambedkar Nagar</option>
+					<option>Fetehpur Beri</option>
+					<option>INA Metro</option>
+					<option>Malviya Nagar</option>
+					<option>Mehrauli</option>
+					<option>Neb Sarai</option>
+					<option>Qutab Minar Metro</option>
+					<option>Safdarjung Enclave</option>
+					<option>Sangam Vihar</option>
+					<option>Amar Colony</option>
+					<option>Badar Pur</option>
+					<option>Chitranjan Park</option>
+					<option>Defence Colony</option>
+					<option>Govind Puri</option>
+					<option>Greater Kailash</option>
+					<option>Jaitpur</option>
+					<option>Jamia Nagar</option>
+					<option>Kalkaji Metro</option>
+					<option>Kalkaji</option>
+					<option>Kotla Mubarak Pur</option>
+					<option>Lajpat Nagar Metro</option>
+					<option>Lajpat Nagar</option>
+					<option>Lodhi Colony</option>
+					<option>New Friends Colony</option>
+					<option>Okhla Industrial Area</option>
+					<option>Pul Prahlad Pur</option>
+					<option>Sarita Vihar</option>
+					<option>Sunlight Colony</option>
+					<option>Bara Hindu Rao</option>
+					<option>Burari</option>
+					<option>Chandni Mahal</option>
+					<option>Civil Lines</option>
+					<option>Companies Act</option>
+					<option>Darya Ganj</option>
+					<option>DBG Road</option>
+					<option>Delhi Cantt</option>
+					<option>Gulabi Bagh</option>
+					<option>Hauz Qazi</option>
+					<option>Hazrat Nizamuddin Railway</option>
+					<option>I.P. Estate</option>
+					<option>Income Tax Act</option>
+					<option>Jama Masjid</option>
+					<option>Kamla Market</option>
+					<option>Karol Bagh</option>
+					<option>Kashmere Gate Metro</option>
+					<option>Kashmere Gate</option>
+					<option>Kotwali</option>
+					<option>Lahori Gate</option>
+					<option>Maurice Nagar</option>
+					<option>Nabi Karim</option>
+					<option>New Delhi Railway Station (NDLS)</option>
+					<option>Old Delhi Railway Station (Railway Main Delhi)</option>
+					<option>Pahar Ganj</option>
+					<option>Prasad Nagar</option>
+					<option>Railway Protection Force (RPF)</option>
+					<option>Rajinder Nagar</option>
+					<option>Roop Nagar</option>
+					<option>Sadar Bazar</option>
+					<option>Sarai Rohilla</option>
+					<option>Sarai Rohilla Railway</option>
+					<option>Seed Act</option>
+					<option>Subzi Mandi</option>
+					<option>Subzi Mandi Railway</option>
+					<option>Timarpur</option>
+					<option>Anand Parbat</option>
+					<option>Hari Nagar</option>
+					<option>Janak Puri Metro</option>
+					<option>Khyala</option>
+					<option>Kirti Nagar</option>
+					<option>Maya Puri</option>
+					<option>Mianwali Nagar</option>
+					<option>Moti Nagar</option>
+					<option>Mundka</option>
+					<option>Nangloi</option>
+					<option>Nihal Vihar</option>
+					<option>Paschim Vihar</option>
+					<option>Patel Nagar</option>
+					<option>Punjabi Bagh</option>
+					<option>Raja Garden Metro</option>
+					<option>Ranhola</option>
+					<option>Ranjeet Nagar</option>
+					<option>Tilak Nagar</option>
+					<option>Barakhamba Road</option>
+					<option>Central Secretariat Metro</option>
+					<option>Chanakya Puri</option>
+					<option>Connaught Place</option>
+					<option>Customs</option>
+					<option>Delhi Cantt</option>
+					<option>Directorate of Revenue Intelligence</option>
+					<option>FERA</option>
+					<option>IGI Airport</option>
+					<option>IGI Metro</option>
+					<option>Inder Puri</option>
+					<option>Mandi House Metro</option>
+					<option>Mandir Marg</option>
+					<option>Naraina</option>
+					<option>North Avenue</option>
+					<option>Parliament Street</option>
+					<option>Prevention of Food Adulteration Act</option>
+					<option>R.K. Puram</option>
+					<option>Sagar Pur</option>
+					<option>Sarojini Nagar</option>
+					<option>South Avenue</option>
+					<option>South Campus</option>
+					<option>Special Cell</option>
+					<option>Tilak Marg</option>
+					<option>Tuglak Road</option>
+					<option>Vasant Kunj North</option>
+					<option>Vasant Kunj South</option>
+					<option>Vasant Vihar</option>
+					<option>Gandhi Nagar</option>
+					<option>Gazi Pur</option>
+					<option>Geeta Colony</option>
+					<option>Kalyan Puri</option>
+					<option>Krishna Nagar</option>
+					<option>Mandawali</option>
+					<option>Mayur Vihar</option>
+					<option>New Ashok Nagar</option>
+					<option>Pandav Nagar</option>
+					<option>Preet Vihar</option>
+					<option>Shakar Pur</option>
+					<option>Yamuna Bank Metro</option>
+					<option>Bhajan Pura</option>
+					<option>Gokul Puri</option>
+					<option>Karawal Nagar</option>
+					<option>Khajoori Khas</option>
+					<option>New Usman Pur</option>
+					<option>Seelampur</option>
+					<option>Shastri Park Metro</option>
+					<option>Sonia Vihar</option>
+					<option>Anand Vihar</option>
+					<option>Anand Vihar Railway</option>
+					<option>Farash Bazar</option>
+					<option>GTB Enclave</option>
+					<option>Harsh Vihar</option>
+					<option>Jagat Puri</option>
+					<option>Jyoti Nagar</option>
+					<option>Madhu Vihar</option>
+					<option>Mansarover Park</option>
+					<option>Nand Nagri</option>
+					<option>Seema Puri</option>
+					<option>Shahdara</option>
+					<option>Vivek Vihar</option>
+					<option>Welcome</option>
+					<option>Zafrabad</option>
+					<option>Aman Vihar</option>
+					<option>Ashok Vihar</option>
+					<option>Begum Pur</option>
+					<option>Bharat Nagar</option>
+					<option>Kanjhawala</option>
+					<option>Keshav Puram</option>
+					<option>Mangol Puri</option>
+					<option>Maurya Enclave</option>
+					<option>Rani Bagh</option>
+					<option>Rithala Metro</option>
+					<option>Rohini North</option>
+					<option>Rohini South</option>
+					<option>Shalimar Bagh</option>
+					<option>Subhash Palace</option>
+					<option>Sultan Puri</option>
+					<option>Udyog Nagar Metro</option>
+					<option>Vijay Vihar</option>
+					<option>Adarsh Nagar</option>
+					<option>Ali Pur</option>
+					<option>Bawana</option>
+					<option>Bhalswa Dairy</option>
+					<option>Jahangir Puri</option>
+					<option>K.N Katju Marg</option>
+					<option>Mahendra Park</option>
+					<option>Model Town</option>
+					<option>Mukherjee Nagar</option>
+					<option>Narela Industrial Area</option>
+					<option>Prashant Vihar</option>
+					<option>Samai Pur Badli</option>
+					<option>Shahabad Dairy</option>
+					<option>Swaroop Nagar</option>
+					<option>Baba Haridas Nagar</option>
+					<option>Binda Pur</option>
+					<option>Chhawla</option>
+					<option>Dabri</option>
+					<option>Delhi Cantonment Board</option>
+					<option>Dwarka North</option>
+					<option>Dwarka Sector-23</option>
+					<option>Dwarka South</option>
+					<option>Jaffarpur Kalan</option>
+					<option>Janak Puri</option>
+					<option>Kapashera</option>
+					<option>Najafgarh</option>
+					<option>Palam Village</option>
+					<option>Uttam Nagar</option>
+					<option>Vikas Puri</option>
+				</select>
+				<br>
+				<br>
+				<label>Upload the images of the lost person</label>
+				<input type="file" class="" id="loster_image" placeholder="Enter Name" multiple name="images">
+				<br>
+				<button type="submit" class="btn btn-primary" id="search_button">Upload</button>
+				</center>
+				<br>
+				</div>
+			</form>
+	</body>
+</html>
